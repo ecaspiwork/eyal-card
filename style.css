@@ -1,0 +1,466 @@
+/* ==========================================================
+   DIGITAL BUSINESS CARD — style.css
+   Dark / Light mode via checkbox :checked  ·  No JavaScript
+   ========================================================== */
+
+/* ── Reset & Base ────────────────────────────────────────── */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+}
+
+/* ── CSS Custom Properties (Dark = default) ──────────────── */
+body {
+  --bg:             #0f0f1a;
+  --bg-card:        #1a1a2e;
+  --bg-card-border: rgba(99, 102, 241, .18);
+  --text-primary:   #e8e8f0;
+  --text-secondary: #9e9eb8;
+  --accent:         #818cf8;
+  --accent-hover:   #a5b4fc;
+  --btn-bg:         rgba(99, 102, 241, .12);
+  --btn-border:     rgba(99, 102, 241, .30);
+  --divider:        rgba(255, 255, 255, .06);
+  --shadow-card:    0 8px 32px rgba(0, 0, 0, .45),
+                    0 1px 3px rgba(0, 0, 0, .25);
+  --shadow-avatar:  0 0 0 4px var(--bg-card),
+                    0 0 0 6px var(--accent);
+  --toggle-bg:      #2a2a42;
+  --toggle-knob:    #818cf8;
+
+  font-family: "Inter", system-ui, -apple-system, sans-serif;
+  background: var(--bg);
+  color: var(--text-primary);
+  line-height: 1.65;
+  min-height: 100vh;
+  transition: background .45s ease, color .45s ease;
+}
+
+/* ── Light-Mode overrides (when checkbox is checked) ─────── */
+#theme-toggle:checked ~ .page-wrapper {
+  --bg:             #f0f0f8;
+  --bg-card:        #ffffff;
+  --bg-card-border: rgba(99, 102, 241, .22);
+  --text-primary:   #1e1e2e;
+  --text-secondary: #555570;
+  --accent:         #6366f1;
+  --accent-hover:   #4f46e5;
+  --btn-bg:         rgba(99, 102, 241, .08);
+  --btn-border:     rgba(99, 102, 241, .25);
+  --divider:        rgba(0, 0, 0, .07);
+  --shadow-card:    0 8px 32px rgba(99, 102, 241, .10),
+                    0 1px 4px rgba(0, 0, 0, .06);
+  --shadow-avatar:  0 0 0 4px var(--bg-card),
+                    0 0 0 6px var(--accent);
+  --toggle-bg:      #ddd6fe;
+  --toggle-knob:    #6366f1;
+}
+
+/* Propagate light palette to body background via a pseudo-element
+   (since body can't be targeted by sibling selectors). */
+#theme-toggle:checked ~ .page-wrapper {
+  background: var(--bg);
+}
+
+/* ── Hidden checkbox ─────────────────────────────────────── */
+.theme-checkbox {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* ── Page wrapper (receives custom-property overrides) ───── */
+.page-wrapper {
+  --bg:             #0f0f1a;
+  --bg-card:        #1a1a2e;
+  --bg-card-border: rgba(99, 102, 241, .18);
+  --text-primary:   #e8e8f0;
+  --text-secondary: #9e9eb8;
+  --accent:         #818cf8;
+  --accent-hover:   #a5b4fc;
+  --btn-bg:         rgba(99, 102, 241, .12);
+  --btn-border:     rgba(99, 102, 241, .30);
+  --divider:        rgba(255, 255, 255, .06);
+  --shadow-card:    0 8px 32px rgba(0, 0, 0, .45),
+                    0 1px 3px rgba(0, 0, 0, .25);
+  --shadow-avatar:  0 0 0 4px var(--bg-card),
+                    0 0 0 6px var(--accent);
+  --toggle-bg:      #2a2a42;
+  --toggle-knob:    #818cf8;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 2rem 1rem;
+  background: var(--bg);
+  color: var(--text-primary);
+  transition: background .45s ease, color .45s ease;
+}
+
+/* ── Theme Toggle Button ─────────────────────────────────── */
+.theme-label {
+  position: fixed;
+  top: 1.25rem;
+  right: 1.25rem;
+  z-index: 100;
+  width: 56px;
+  height: 30px;
+  background: var(--toggle-bg);
+  border-radius: 999px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 6px;
+  transition: background .35s ease;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, .25);
+}
+
+.theme-label .icon {
+  font-size: .85rem;
+  line-height: 1;
+  transition: opacity .3s ease;
+  user-select: none;
+}
+
+.icon-sun  { color: #fbbf24; opacity: .45; }
+.icon-moon { color: #c4b5fd; opacity: 1; }
+
+/* Knob */
+.theme-label::after {
+  content: "";
+  position: absolute;
+  left: 3px;
+  width: 24px;
+  height: 24px;
+  background: var(--toggle-knob);
+  border-radius: 50%;
+  transition: transform .35s cubic-bezier(.4, 0, .2, 1),
+              background .35s ease;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, .3);
+}
+
+/* Checked state: slide knob right */
+#theme-toggle:checked ~ .page-wrapper .theme-label::after {
+  transform: translateX(26px);
+}
+
+#theme-toggle:checked ~ .page-wrapper .icon-sun  { opacity: 1; }
+#theme-toggle:checked ~ .page-wrapper .icon-moon { opacity: .4; }
+
+/* Focus ring for accessibility */
+#theme-toggle:focus-visible ~ .page-wrapper .theme-label {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+
+/* ── Card ────────────────────────────────────────────────── */
+.card {
+  width: 100%;
+  max-width: 480px;
+  background: var(--bg-card);
+  border: 1px solid var(--bg-card-border);
+  border-radius: 1.25rem;
+  padding: 2.5rem 2rem 2rem;
+  box-shadow: var(--shadow-card);
+  transition: background .45s ease, border-color .45s ease,
+              box-shadow .45s ease;
+
+  /* Subtle entrance animation (CSS only) */
+  animation: card-in .6s cubic-bezier(.22, 1, .36, 1) both;
+}
+
+@keyframes card-in {
+  from {
+    opacity: 0;
+    transform: translateY(24px) scale(.97);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* ── Header / Avatar ─────────────────────────────────────── */
+.card__header {
+  text-align: center;
+  margin-bottom: 1.75rem;
+}
+
+.avatar-ring {
+  display: inline-block;
+  border-radius: 50%;
+  padding: 4px;
+  background: linear-gradient(135deg, #818cf8, #c084fc, #f472b6);
+  margin-bottom: 1.25rem;
+  animation: ring-glow 4s ease-in-out infinite alternate;
+}
+
+@keyframes ring-glow {
+  0%   { box-shadow: 0 0 12px rgba(129, 140, 248, .3); }
+  100% { box-shadow: 0 0 24px rgba(192, 132, 252, .45); }
+}
+
+.avatar {
+  display: block;
+  width: 130px;
+  height: 130px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid var(--bg-card);
+  transition: border-color .45s ease;
+}
+
+.name {
+  font-size: 1.65rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  margin-bottom: .3rem;
+  background: linear-gradient(135deg, var(--accent), #c084fc);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.title {
+  font-size: .92rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+  letter-spacing: .01em;
+}
+
+/* ── Sections ────────────────────────────────────────────── */
+.card__section {
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--divider);
+  margin-top: 1.5rem;
+  transition: border-color .45s ease;
+}
+
+.section-heading {
+  font-size: .72rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: .12em;
+  color: var(--accent);
+  margin-bottom: .85rem;
+}
+
+/* ── Bio ─────────────────────────────────────────────────── */
+.bio {
+  font-size: .925rem;
+  color: var(--text-secondary);
+  line-height: 1.75;
+}
+
+/* ── Skills Tags ─────────────────────────────────────────── */
+.skills-list {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: .5rem;
+}
+
+.skill-tag {
+  font-size: .78rem;
+  font-weight: 600;
+  color: var(--accent);
+  background: var(--btn-bg);
+  border: 1px solid var(--btn-border);
+  padding: .35rem .75rem;
+  border-radius: 999px;
+  transition: background .25s ease, color .25s ease,
+              transform .2s ease, border-color .25s ease;
+  cursor: default;
+}
+
+.skill-tag:hover {
+  background: var(--accent);
+  color: #fff;
+  border-color: var(--accent);
+  transform: translateY(-2px);
+}
+
+/* ── Projects ────────────────────────────────────────────── */
+.projects-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: .65rem;
+}
+
+.project-card {
+  background: var(--btn-bg);
+  border: 1px solid var(--btn-border);
+  border-left: 3px solid var(--accent);
+  border-radius: .6rem;
+  padding: .85rem 1rem;
+  transition: background .25s ease, border-color .25s ease,
+              transform .2s ease, box-shadow .25s ease;
+}
+
+.project-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(99, 102, 241, .12);
+  border-left-color: var(--accent-hover);
+}
+
+.project-title {
+  font-size: .88rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: .25rem;
+  transition: color .45s ease;
+}
+
+.project-desc {
+  font-size: .82rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  transition: color .45s ease;
+}
+
+/* ── Social Buttons ──────────────────────────────────────── */
+.social-links {
+  display: flex;
+  gap: .75rem;
+}
+
+.btn {
+  flex: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: .5rem;
+  padding: .7rem 1rem;
+  font-family: inherit;
+  font-size: .88rem;
+  font-weight: 600;
+  color: var(--accent);
+  background: var(--btn-bg);
+  border: 1px solid var(--btn-border);
+  border-radius: .7rem;
+  text-decoration: none;
+  transition: background .25s ease, border-color .25s ease,
+              color .25s ease, transform .2s ease;
+}
+
+.btn:hover,
+.btn:focus-visible {
+  background: var(--accent);
+  color: #fff;
+  border-color: var(--accent);
+  transform: translateY(-2px);
+}
+
+.btn:active {
+  transform: translateY(0);
+}
+
+.btn-icon {
+  width: 18px;
+  height: 18px;
+  fill: currentColor;
+  flex-shrink: 0;
+}
+
+/* ── Contact List ────────────────────────────────────────── */
+.contact-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: .6rem;
+}
+
+.contact-link {
+  display: inline-flex;
+  align-items: center;
+  gap: .6rem;
+  font-size: .9rem;
+  color: var(--text-secondary);
+  text-decoration: none;
+  padding: .45rem .65rem;
+  border-radius: .5rem;
+  transition: color .25s ease, background .25s ease;
+}
+
+.contact-link:hover,
+.contact-link:focus-visible {
+  color: var(--accent-hover);
+  background: var(--btn-bg);
+}
+
+.contact-icon {
+  width: 18px;
+  height: 18px;
+  fill: var(--accent);
+  flex-shrink: 0;
+  transition: fill .45s ease;
+}
+
+/* ── Footer ──────────────────────────────────────────────── */
+.footer {
+  margin-top: 1.75rem;
+  font-size: .75rem;
+  color: var(--text-secondary);
+  text-align: center;
+  opacity: .6;
+  transition: color .45s ease;
+}
+
+/* ── Responsive ──────────────────────────────────────────── */
+
+/* Small phones */
+@media (max-width: 400px) {
+  .card {
+    padding: 2rem 1.25rem 1.5rem;
+  }
+
+  .social-links {
+    flex-direction: column;
+  }
+
+  .name {
+    font-size: 1.35rem;
+  }
+
+  .avatar {
+    width: 100px;
+    height: 100px;
+  }
+}
+
+/* Tablets & small desktops */
+@media (min-width: 600px) {
+  .card {
+    padding: 3rem 2.75rem 2.25rem;
+  }
+}
+
+/* Large desktops — center card elegantly */
+@media (min-width: 1024px) {
+  .page-wrapper {
+    padding: 4rem 2rem;
+  }
+
+  .card {
+    max-width: 520px;
+    padding: 3.25rem 3rem 2.5rem;
+  }
+
+  .card:hover {
+    box-shadow: 0 12px 48px rgba(99, 102, 241, .15),
+                0 2px 6px rgba(0, 0, 0, .08);
+    border-color: rgba(99, 102, 241, .35);
+  }
+}
