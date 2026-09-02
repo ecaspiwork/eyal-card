@@ -1,14 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Digital Business Card of Eyal Caspi — Computer Science Student, Front-End Developer, and tech enthusiast." />
+  <meta name="description"
+    content="Digital Business Card of Eyal Caspi — Computer Science Student, Front-End Developer, and tech enthusiast." />
   <title>Eyal Caspi — Digital Business Card</title>
   <link rel="stylesheet" href="style.css" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
 </head>
 
 <body>
@@ -29,27 +31,23 @@
       <header class="card__header">
         <div class="avatar-ring">
           <img
-            src="https://api.dicebear.com/9.x/initials/svg?seed=ECa&backgroundColor=6366f1&textColor=ffffff&fontSize=42"
-            alt="Profile picture of Eyal Caspi"
-            class="avatar"
-            width="130"
-            height="130"
-          />
+            src="https://api.dicebear.com/9.x/initials/svg?seed=ECa&backgroundColor=0d9488&textColor=ffffff&fontSize=42"
+            alt="Profile picture of Eyal Caspi" class="avatar" width="130" height="130" />
         </div>
         <h1 class="name">Eyal Caspi</h1>
-        <p class="title">Computer Science Student &amp; Front-End Developer</p>
+        <p class="title">DevOps Engineer &amp; Computer Science Student</p>
       </header>
 
       <!-- ===== Bio ===== -->
       <section class="card__section" aria-label="About me">
         <h2 class="section-heading">About Me</h2>
         <p class="bio">
-          I'm a passionate Computer Science student with a deep interest in
-          building beautiful, accessible web interfaces. My journey started with
-          tinkering on small HTML pages and has since grown into a love for
-          modern front-end frameworks, UI/UX design, and creative coding.
-          I've contributed to open-source projects, built responsive dashboards,
-          and I'm always exploring new technologies to sharpen my craft.
+          I'm a Computer Science student and DevOps Engineer with a passion for
+          building reliable infrastructure and automating everything. I work
+          with Terraform, GCP, and CI/CD pipelines daily, and I'm comfortable
+          navigating Linux systems at any level. From containerizing
+          microservices to designing cloud architectures, I enjoy bridging
+          the gap between development and operations.
         </p>
       </section>
 
@@ -57,14 +55,16 @@
       <section class="card__section" aria-label="Skills">
         <h2 class="section-heading">Skills</h2>
         <ul class="skills-list">
-          <li class="skill-tag">HTML5</li>
-          <li class="skill-tag">CSS3</li>
-          <li class="skill-tag">JavaScript</li>
-          <li class="skill-tag">React</li>
+          <li class="skill-tag">Terraform</li>
+          <li class="skill-tag">GCP</li>
+          <li class="skill-tag">CI/CD</li>
+          <li class="skill-tag">Docker</li>
+          <li class="skill-tag">Kubernetes</li>
+          <li class="skill-tag">Linux</li>
           <li class="skill-tag">Git &amp; GitHub</li>
-          <li class="skill-tag">Responsive Design</li>
-          <li class="skill-tag">UI/UX</li>
           <li class="skill-tag">Python</li>
+          <li class="skill-tag">Bash</li>
+          <li class="skill-tag">HTML &amp; CSS</li>
         </ul>
       </section>
 
@@ -73,16 +73,19 @@
         <h2 class="section-heading">Projects</h2>
         <ul class="projects-list">
           <li class="project-card">
-            <h3 class="project-title">Weather Dashboard</h3>
-            <p class="project-desc">A responsive weather app with live forecasts, animated icons, and location-based search.</p>
+            <h3 class="project-title">GCP Infrastructure as Code</h3>
+            <p class="project-desc">Provisioned a full cloud environment on GCP using Terraform modules — VPCs, GKE
+              clusters, IAM, and Cloud SQL.</p>
           </li>
           <li class="project-card">
-            <h3 class="project-title">Task Manager</h3>
-            <p class="project-desc">A drag-and-drop Kanban board for organizing tasks with dark mode and local storage.</p>
+            <h3 class="project-title">CI/CD Pipeline</h3>
+            <p class="project-desc">Built an end-to-end GitHub Actions pipeline with Docker builds, automated tests, and
+              deployment to Kubernetes.</p>
           </li>
           <li class="project-card">
-            <h3 class="project-title">Portfolio Site</h3>
-            <p class="project-desc">A personal portfolio showcasing projects, skills, and a blog — built with semantic HTML &amp; CSS.</p>
+            <h3 class="project-title">Server Monitoring Dashboard</h3>
+            <p class="project-desc">Set up Prometheus &amp; Grafana monitoring stack on Linux, with custom alerting
+              rules and Slack notifications.</p>
           </li>
         </ul>
       </section>
@@ -91,12 +94,20 @@
       <section class="card__section" aria-label="Social profiles">
         <h2 class="section-heading">Connect</h2>
         <nav class="social-links" aria-label="Social media links">
-          <a href="https://github.com/eyalcaspi" target="_blank" rel="noopener noreferrer" class="btn btn--github" id="link-github">
-            <svg class="btn-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 .5C5.73.5.5 5.73.5 12c0 5.08 3.29 9.39 7.86 10.91.58.1.79-.25.79-.56v-1.95c-3.2.69-3.87-1.54-3.87-1.54-.52-1.34-1.28-1.7-1.28-1.7-1.04-.71.08-.7.08-.7 1.15.08 1.76 1.18 1.76 1.18 1.02 1.76 2.69 1.25 3.34.96.1-.74.4-1.25.73-1.54-2.55-.29-5.24-1.28-5.24-5.69 0-1.26.45-2.29 1.18-3.09-.12-.29-.51-1.46.11-3.05 0 0 .97-.31 3.17 1.18a10.97 10.97 0 0 1 5.78 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.24 2.76.12 3.05.74.8 1.18 1.83 1.18 3.09 0 4.42-2.69 5.4-5.25 5.68.42.36.79 1.06.79 2.14v3.17c0 .31.21.67.8.56A11.5 11.5 0 0 0 23.5 12C23.5 5.73 18.27.5 12 .5z"/></svg>
+          <a href="https://github.com/eyalcaspi" target="_blank" rel="noopener noreferrer" class="btn btn--github"
+            id="link-github">
+            <svg class="btn-icon" viewBox="0 0 24 24" aria-hidden="true">
+              <path
+                d="M12 .5C5.73.5.5 5.73.5 12c0 5.08 3.29 9.39 7.86 10.91.58.1.79-.25.79-.56v-1.95c-3.2.69-3.87-1.54-3.87-1.54-.52-1.34-1.28-1.7-1.28-1.7-1.04-.71.08-.7.08-.7 1.15.08 1.76 1.18 1.76 1.18 1.02 1.76 2.69 1.25 3.34.96.1-.74.4-1.25.73-1.54-2.55-.29-5.24-1.28-5.24-5.69 0-1.26.45-2.29 1.18-3.09-.12-.29-.51-1.46.11-3.05 0 0 .97-.31 3.17 1.18a10.97 10.97 0 0 1 5.78 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.24 2.76.12 3.05.74.8 1.18 1.83 1.18 3.09 0 4.42-2.69 5.4-5.25 5.68.42.36.79 1.06.79 2.14v3.17c0 .31.21.67.8.56A11.5 11.5 0 0 0 23.5 12C23.5 5.73 18.27.5 12 .5z" />
+            </svg>
             GitHub
           </a>
-          <a href="https://linkedin.com/in/eyalcaspi" target="_blank" rel="noopener noreferrer" class="btn btn--linkedin" id="link-linkedin">
-            <svg class="btn-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.36V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45z"/></svg>
+          <a href="https://linkedin.com/in/eyalcaspi" target="_blank" rel="noopener noreferrer"
+            class="btn btn--linkedin" id="link-linkedin">
+            <svg class="btn-icon" viewBox="0 0 24 24" aria-hidden="true">
+              <path
+                d="M20.45 20.45h-3.55v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.36V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45z" />
+            </svg>
             LinkedIn
           </a>
         </nav>
@@ -108,13 +119,19 @@
         <ul class="contact-list">
           <li>
             <a href="tel:+972501234567" class="contact-link" id="link-phone">
-              <svg class="contact-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M6.62 10.79a15.05 15.05 0 0 0 6.59 6.59l2.2-2.2a1 1 0 0 1 1.01-.24c1.12.37 2.33.57 3.58.57a1 1 0 0 1 1 1v3.49a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.46.57 3.58a1 1 0 0 1-.25 1.01l-2.2 2.2z"/></svg>
+              <svg class="contact-icon" viewBox="0 0 24 24" aria-hidden="true">
+                <path
+                  d="M6.62 10.79a15.05 15.05 0 0 0 6.59 6.59l2.2-2.2a1 1 0 0 1 1.01-.24c1.12.37 2.33.57 3.58.57a1 1 0 0 1 1 1v3.49a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.46.57 3.58a1 1 0 0 1-.25 1.01l-2.2 2.2z" />
+              </svg>
               +972-50-123-4567
             </a>
           </li>
           <li>
             <a href="mailto:eyal.caspi@email.com" class="contact-link" id="link-email">
-              <svg class="contact-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z"/></svg>
+              <svg class="contact-icon" viewBox="0 0 24 24" aria-hidden="true">
+                <path
+                  d="M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z" />
+              </svg>
               eyal.caspi@email.com
             </a>
           </li>
@@ -129,4 +146,5 @@
 
   </div>
 </body>
+
 </html>
